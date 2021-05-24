@@ -1,0 +1,6 @@
+<h1>Vegetables!</h1>
+<ul>
+  <% it.vegetables.forEach((veggie) => { %>
+    <li><%= veggie %></li>
+  <% }); %>
+</ul>

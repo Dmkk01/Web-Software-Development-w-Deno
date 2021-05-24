@@ -1,0 +1,3 @@
+<h1>
+  Requests to favicon.ico: <%= it.count %>
+</h1>

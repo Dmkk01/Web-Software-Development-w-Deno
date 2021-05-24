@@ -1,0 +1,3 @@
+<%~ includeFile('./partials/one.eta') %>
+<p>View templates are fun.</p>
+<%~ includeFile('./partials/two.eta') %>

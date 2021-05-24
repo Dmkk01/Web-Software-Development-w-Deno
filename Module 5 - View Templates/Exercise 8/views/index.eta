@@ -1,0 +1,6 @@
+<h1>Methods!</h1>
+<ul>
+  <% it.methods.forEach((method) => { %>
+    <li><%= method %></li>
+  <% }); %>
+</ul>

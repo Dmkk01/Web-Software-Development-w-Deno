@@ -1,0 +1,6 @@
+<h1>Some Roman emperors</h1>
+<ul>
+  <% it.emperors.forEach((emperor) => { %>
+    <li><%= emperor.name %> (<%= emperor.yearOfBirth %>)</li>
+  <% }); %>
+</ul>
