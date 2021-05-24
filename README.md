@@ -5,3 +5,4 @@ This repository contains the exercise materials from the Web Software Developmen
 - JavaScript Primer
 - First Web Applications
 - HTML
+- View Templates
