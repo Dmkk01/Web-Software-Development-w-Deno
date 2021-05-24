@@ -4,3 +4,4 @@ This repository contains the exercise materials from the Web Software Developmen
 # Modules Include:
 - JavaScript Primer
 - First Web Applications
+- HTML
