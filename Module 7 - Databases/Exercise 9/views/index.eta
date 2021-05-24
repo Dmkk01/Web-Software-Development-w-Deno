@@ -1,0 +1,6 @@
+<h1>Analysis</h1>
+<% if (it.average) { %>
+<p>Measurement average: <%= it.average %></p>
+<% } else { %>
+<p>Not enough measurements for calculating the average.</p>
+<% } %>
