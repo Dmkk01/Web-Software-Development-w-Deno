@@ -1,0 +1,15 @@
+<h1>Animals!</h1>
+<form method="POST">
+  <input type="text" name="name" />
+  <input type="submit" value="Submit!" />
+</form>
+<ul>
+  <% it.animals.forEach((animal) => { %>
+    <li>
+      <%= animal.name %>
+      <form method='POST' action='/animals/<%= animal.id %>/delete'>
+        <input type='submit' value='Delete' />
+      </form>
+    </li>
+  <% }); %>
+</ul>
