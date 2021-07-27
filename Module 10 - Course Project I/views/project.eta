@@ -1,0 +1,28 @@
+<% layout("./layouts/layout.eta") %>
+
+
+<a href="/projects"> Go back to all projects</a>
+
+<h1><%= it.project.name %></h1>
+
+<form method="POST" action="/projects/<%= it.project.id %>/issues">
+  Description: <input type="text" name="description" />
+  <input type="submit" value="Add issue" />
+</form>
+
+
+<% if (it.issues) { %>
+  <h2>Issues</h2>
+  <ul>
+    <% it.issues.forEach((issue) => { %>
+      <li>
+        <%= issue.description %>
+        <form action="/projects/<%= it.project.id %>/issues/<%= issue.id %>" method="POST">
+          <input type="submit" value="Resolve issue"/>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+<% } else { %>
+  <p>No added issues</p>
+<% } %>
