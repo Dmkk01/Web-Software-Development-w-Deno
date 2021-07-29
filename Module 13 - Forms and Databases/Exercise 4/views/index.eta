@@ -1,0 +1,7 @@
+<h1>Tickets</h1>
+
+<ul>
+<% it.tickets.forEach((x) => { %>
+  <li><%= x.id %>: <%= x.content %></li>
+<% }); %>
+</ul>

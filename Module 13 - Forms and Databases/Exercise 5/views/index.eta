@@ -1,0 +1,10 @@
+<h1>Tickets</h1>
+<form method='POST' action='/tickets'>
+    <input type='text' name='content' />
+    <input type='submit' value='Add a ticket!' />
+</form>
+<ul>
+<% it.tickets.forEach((x) => { %>
+  <li><%= x.id %>: <%= x.content %></li>
+<% }); %>
+</ul>
