@@ -15,7 +15,7 @@ app.use(renderMiddleware);
 app.use(async ({ request, response, state }, next) => {
   if (request.url.pathname.startsWith("/accounts")) {
     if (await state.session.get("authenticated")) {
-      response.status = 200;
+      response.status = 302;
       await next();
     } else {
       response.status = 401;

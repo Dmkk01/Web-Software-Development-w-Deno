@@ -11,6 +11,9 @@ router.get("/auth/register", authenticationController.showRegistrationForm);
 router.post("/auth/register", authenticationController.postRegistrationForm);
 router.get("/auth/login", authenticationController.showLoginForm);
 router.post("/auth/login", authenticationController.postLoginForm);
+router.post("/accounts/:id/deposit", accountsController.depositMoney);
+router.post("/accounts/:id/withdraw", accountsController.withdrawMoney);
+router.get("/accounts/:id", accountsController.getAccount);
 router.get("/accounts", accountsController.getAccounts);
 router.post("/accounts", accountsController.postAccounts);
 
