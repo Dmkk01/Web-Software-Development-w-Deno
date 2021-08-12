@@ -18,5 +18,9 @@ const addOption = async (question_id , option_text , is_correct ) => {
   );
 };
 
+const deleteOption = async (questionID, optionID) => {
+  await executeQuery('DELETE FROM question_answer_options WHERE question_id  = $1 AND id = $2', questionID, optionID);
+}
 
-export { addOption, getOptions };
+
+export { addOption, getOptions, deleteOption };

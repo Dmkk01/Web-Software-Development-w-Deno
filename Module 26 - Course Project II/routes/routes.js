@@ -1,13 +1,17 @@
 import { Router } from "https://deno.land/x/oak@v7.7.0/mod.ts";
-import * as questionController from "./controllers/questionController.js";
+import * as multiQuestionController from "./controllers/multiQuestionController.js";
+import * as singleQuestionController from "./controllers/singleQuestionController.js";
 
 const router = new Router();
 
-router.get("/", questionController.redirectRoot);
-router.get("/questions", questionController.getAllQuestions);
-router.post("/questions", questionController.addQuestion);
+router.get("/", multiQuestionController.redirectRoot);
+router.get("/questions", multiQuestionController.getAllQuestions);
+router.post("/questions", multiQuestionController.addQuestion);
 
-router.get("/questions/:id", questionController.getQuestion);
-router.post("/questions/:id/options", questionController.addOption);
+router.get("/questions/:id", singleQuestionController.getQuestion);
+router.post("/questions/:id/delete", singleQuestionController.deleteQuestion);
+router.post("/questions/:id/options", singleQuestionController.addOption);
+router.post("/questions/:id/options/:optionID/delete", singleQuestionController.deleteOption);
+
 
 export { router };
