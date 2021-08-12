@@ -18,7 +18,7 @@ const addQuestion = async (userId, title, text) => {
 
 const getQuestion = async (questionID) => {
     const res = await executeQuery('SELECT * FROM questions WHERE id = $1', questionID);
-    return res.rows;
+    return res.rows[0];
 }
 
 export { getAllQuestions, addQuestion, getQuestion };

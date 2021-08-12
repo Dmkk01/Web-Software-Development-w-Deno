@@ -20,5 +20,5 @@
     <input type="submit" value="Add"/>
 </form>
 <% if (it.error) {%>
-    <p> <%= it.error %> </p>
+    <strong> <%= it.error %> </strong>
 <% } %>

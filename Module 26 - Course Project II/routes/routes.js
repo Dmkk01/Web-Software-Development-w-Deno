@@ -8,5 +8,6 @@ router.get("/questions", questionController.getAllQuestions);
 router.post("/questions", questionController.addQuestion);
 
 router.get("/questions/:id", questionController.getQuestion);
+router.post("/questions/:id/options", questionController.addOption);
 
 export { router };
