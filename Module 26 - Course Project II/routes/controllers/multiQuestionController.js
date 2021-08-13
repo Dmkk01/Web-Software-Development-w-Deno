@@ -2,7 +2,7 @@ import * as questionService from "../../services/questionService.js";
 import * as optionService from "../../services/optionService.js";
 
 const redirectRoot = async ({response}) => {
-    response.redirect("/questions");
+    response.redirect("/auth/login");
 } 
 
 const getQuestionsData = () => {
