@@ -1,7 +1,7 @@
 import { executeQuery } from "../database/database.js";
 
-const getAllQuestions = async () => {
-    const res = await executeQuery('SELECT * FROM questions')
+const getAllQuestions = async (userID) => {
+    const res = await executeQuery('SELECT * FROM questions WHERE user_id = $1', userID)
     return res.rows;
 }
 

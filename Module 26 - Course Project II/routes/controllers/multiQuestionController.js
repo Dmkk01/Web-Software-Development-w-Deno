@@ -13,16 +13,15 @@ const getQuestionsData = () => {
     }
 }
 
-const getAllQuestions = async ({ render }) => {
+const getAllQuestions = async ({ render, user }) => {
     const data = getQuestionsData()
-    data.questions = await questionService.getAllQuestions()
+    data.questions = await questionService.getAllQuestions(user.id);
     render("questions.eta", data);
 };
 
-const addQuestion = async ({request, render}) => {
+const addQuestion = async ({request, render, user}) => {
     const body = request.body({ type: "form" });
     const params = await body.value;
-
 
     const title = params.get("title");
     const question_text = params.get("question_text")
@@ -37,8 +36,8 @@ const addQuestion = async ({request, render}) => {
         render("questions.eta", data);
     }
     else {
-        await questionService.addQuestion(1, title, question_text);
-        data.questions = await questionService.getAllQuestions()
+        await questionService.addQuestion(user.id, title, question_text);
+        data.questions = await questionService.getAllQuestions(user.id)
         render("questions.eta", data);
     }
 }
