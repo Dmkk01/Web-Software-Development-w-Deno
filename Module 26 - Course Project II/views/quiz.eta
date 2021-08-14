@@ -1,0 +1,23 @@
+<% layout("./layouts/layout.eta") %>
+
+<% if (it.question) { %>
+    <h3> Question Title:</h3>
+    <p> <%= it.question.title %> </p>
+    <h3> Question Text:</h3>
+    <p> <%= it.question.question_text %> </p>
+    <h3> Question Options: </h3>
+
+
+    <% it.options.forEach(option => { %>
+        <b> <%= option.option_text %> </b>
+        <form action="/quiz/<%= it.question.id %>/options/<%= option.id %>" method="POST">
+            <input type="submit" value="Choose" />
+        </form>
+    <% }); %>
+        
+
+    <a href="/quiz"> Get a different question</a>
+<% } else { %>
+    <h3>No questions available yet.</h3>
+    <a href="/questions"> Create a question</a>
+<% } %>

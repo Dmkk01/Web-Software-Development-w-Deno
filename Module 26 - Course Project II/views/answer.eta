@@ -1,0 +1,9 @@
+<% layout("./layouts/layout.eta") %>
+
+<% if (it.correct) { %>
+    <h3> The correct option was: <%= it.correct %></h3>
+<% }%>
+    
+    <p> <%= it.message %> </p>
+
+<a href="/quiz"> Next question</a>

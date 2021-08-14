@@ -21,8 +21,15 @@ const getQuestion = async (questionID) => {
     return res.rows[0];
 }
 
+const getRandomQuestion = async () => {
+  const res = await executeQuery('SELECT * FROM questions ORDER BY RANDOM() LIMIT 1 ');
+  return res.rows[0];
+}
+
 const deleteQuestion = async (questionID) => {
   await executeQuery('DELETE FROM questions WHERE id = $1', questionID);
 }
 
-export { getAllQuestions, addQuestion, getQuestion, deleteQuestion };
+
+
+export { getAllQuestions, addQuestion, getQuestion, deleteQuestion, getRandomQuestion };

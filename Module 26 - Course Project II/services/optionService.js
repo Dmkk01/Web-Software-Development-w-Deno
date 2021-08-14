@@ -9,6 +9,11 @@ const getOptions = async (question_id ) => {
     return res.rows
   };
 
+  const getOptionByID = async (id) => {
+    const res = await executeQuery(`SELECT * FROM question_answer_options WHERE id = $1 `, id);
+    return res.rows[0]
+  }
+
 const addOption = async (question_id , option_text , is_correct ) => {
   await executeQuery(
     `INSERT INTO question_answer_options (question_id, option_text, is_correct) VALUES ($1, $2, $3)`,
@@ -23,4 +28,4 @@ const deleteOption = async (questionID, optionID) => {
 }
 
 
-export { addOption, getOptions, deleteOption };
+export { addOption, getOptions, deleteOption, getOptionByID };
