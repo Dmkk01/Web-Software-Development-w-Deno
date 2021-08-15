@@ -4,6 +4,7 @@ import * as singleQuestionController from "./controllers/singleQuestionControlle
 import * as registrationController from "./controllers/registrationController.js";
 import * as loginController from "./controllers/loginController.js";
 import * as quizController from "./controllers/quizController.js";
+import * as statisticsController from "./controllers/statisticsController.js";
 
 const router = new Router();
 
@@ -27,6 +28,8 @@ router.get("/quiz/:id", quizController.showQuizQuestion);
 router.post("/quiz/:id/options/:optionId", quizController.submitQuestion);
 router.get("/quiz/:id/correct", quizController.correctAnswer);
 router.get("/quiz/:id/incorrect", quizController.wrongAnswer);
+
+router.get( "/statistics", statisticsController.showStats);
 
 
 
