@@ -1,4 +1,4 @@
-import { Router } from "https://deno.land/x/oak@v7.7.0/mod.ts";
+import {Router} from "../deps.js";
 import * as multiQuestionController from "./controllers/multiQuestionController.js";
 import * as singleQuestionController from "./controllers/singleQuestionController.js";
 import * as registrationController from "./controllers/registrationController.js";
