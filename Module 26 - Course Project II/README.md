@@ -1,4 +1,4 @@
-Address of the deployed application: 
+Address of the deployed application: https://web-dev-questions-app.herokuapp.com/
 
 Database credentials (inside database.js) to fill in:
 const CONCURRENT_CONNECTIONS = 2;
