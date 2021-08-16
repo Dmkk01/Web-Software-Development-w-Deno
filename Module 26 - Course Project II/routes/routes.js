@@ -6,6 +6,7 @@ import * as loginController from "./controllers/loginController.js";
 import * as quizController from "./controllers/quizController.js";
 import * as statisticsController from "./controllers/statisticsController.js";
 import * as mainController from "./controllers/mainController.js";
+import * as questionsApi from "./api/questionsApi.js";
 
 const router = new Router();
 
@@ -32,6 +33,8 @@ router.get("/quiz/:id/incorrect", quizController.wrongAnswer);
 
 router.get( "/statistics", statisticsController.showStats);
 
+router.get("/api/questions/random", questionsApi.getRandomQuestion);
+router.post("/api/questions/answer", questionsApi.answerQuestion);
 
 
 export { router };

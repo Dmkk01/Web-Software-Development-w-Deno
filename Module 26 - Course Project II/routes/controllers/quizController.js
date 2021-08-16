@@ -54,10 +54,18 @@ const wrongAnswer = async ({render, params, user }) => {
     const res = await optionService.getOptions(questionID);
 
     const data = {
-        correct: res.find(x => x.is_correct == true).option_text,
         message: 'Incorrect!',
         user: user.id
     }
+    const correctAnswer = res.find(x => x.is_correct == true);
+    
+    if (!correctAnswer) {
+        data.correct = ''
+    }
+    else {
+        data.correct = correctAnswer.option_text
+    }
+     
     render('answer.eta', data)
 };
 
