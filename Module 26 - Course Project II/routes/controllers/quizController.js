@@ -7,7 +7,7 @@ const getRandomQuestion = async ({ response, render,  user }) => {
     const res = await questionService.getRandomQuestion();
     
     if (!res) {
-        render('quiz.eta')
+        render('quiz.eta', {user: user.id})
     }
     else {
         const questionID = res.id
@@ -15,10 +15,11 @@ const getRandomQuestion = async ({ response, render,  user }) => {
     }   
 };
 
-const showQuizQuestion = async ({ response,  render, params }) => {
+const showQuizQuestion = async ({ response,  render, params, user }) => {
     const data = {
         question: await questionService.getQuestion(params.id),
-        options: await optionService.getOptions(params.id)
+        options: await optionService.getOptions(params.id),
+        user: user.id
     }
     render('quiz.eta', data)
 };
@@ -40,20 +41,22 @@ const submitQuestion = async ({ response,  render, params, user }) => {
     }
 };
 
-const correctAnswer = async ({ render }) => {
+const correctAnswer = async ({ render, user }) => {
     const data = {
-        message: 'Correct!'
+        message: 'Correct!',
+        user: user.id
     }
     render('answer.eta', data)
 };
 
-const wrongAnswer = async ({render, params }) => {
+const wrongAnswer = async ({render, params, user }) => {
     const questionID = params.id
     const res = await optionService.getOptions(questionID);
 
     const data = {
         correct: res.find(x => x.is_correct == true).option_text,
-        message: 'Incorrect!'
+        message: 'Incorrect!',
+        user: user.id
     }
     render('answer.eta', data)
 };

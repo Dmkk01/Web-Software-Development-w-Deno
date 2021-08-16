@@ -10,6 +10,17 @@
         <title>Chores!</title>
     </head>
     <body>
+        <% if (it.user) { %>
+            <div class="container">
+                <table>
+                    <tr>
+                        <th><a href="/questions">Questions</a></th>
+                        <th><a href="/quiz">Quiz</a></th>
+                        <th><a href="/statistics">Statistics</a></th>
+                    </tr>
+                </table>
+            </div>
+        <% } %>
         <div class="container">
             <%~ it.body %>
         </div>

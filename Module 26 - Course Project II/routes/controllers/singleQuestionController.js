@@ -2,15 +2,16 @@ import * as questionService from "../../services/questionService.js";
 import * as optionService from "../../services/optionService.js";
 
 
-const getSingleQuestionData = () => {
+const getSingleQuestionData = (user) => {
     return {
         error: '',
-        option_text: ''
+        option_text: '',
+        user: user
     }
 }
-const getQuestion = async ({ render, params, response }) => {
+const getQuestion = async ({ render, params, user }) => {
 
-    const data = getSingleQuestionData()
+    const data = getSingleQuestionData(user.id)
     data.question = await questionService.getQuestion(params.id);
     data.options = await optionService.getOptions(params.id);
 
@@ -32,7 +33,7 @@ const addOption = async ({ render, response, request, params, user }) => {
     const option_text = parameters.get("option_text");
     const is_correct = parameters.get("is_correct");
 
-    const data = getSingleQuestionData();
+    const data = getSingleQuestionData(user.id);
 
     if (option_text.length < 1) {
         data.error = 'The input needs to be at least 1 character long!';

@@ -5,10 +5,11 @@ import * as registrationController from "./controllers/registrationController.js
 import * as loginController from "./controllers/loginController.js";
 import * as quizController from "./controllers/quizController.js";
 import * as statisticsController from "./controllers/statisticsController.js";
+import * as mainController from "./controllers/mainController.js";
 
 const router = new Router();
 
-router.get("/", multiQuestionController.redirectRoot);
+router.get("/", mainController.showMain);
 router.get("/questions", multiQuestionController.getAllQuestions);
 router.post("/questions", multiQuestionController.addQuestion);
 

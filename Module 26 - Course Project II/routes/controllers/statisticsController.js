@@ -8,6 +8,7 @@ const showStats = async ({response, render, user }) => {
     const correct = userAnswers.filter(x => x.correct == true)
     data.correct = correct.length
     data.answers = userAnswers.length
+    data.user = user.id
     
 
     const allQuestions = await statisticsService.selectAllQuestions(user.id)
