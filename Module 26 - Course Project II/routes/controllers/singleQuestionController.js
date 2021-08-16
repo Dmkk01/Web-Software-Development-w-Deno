@@ -17,26 +17,34 @@ const getQuestion = async ({ render, params, response }) => {
     render('question.eta', data)
 };
 
-const addOption = async ({ render, response, request, params }) => {
+const addOption = async ({ render, response, request, params, user }) => {
     const body = request.body({ type: "form" });
     const parameters = await body.value;
+    const userID = user.id;
+
+    const currentQuestion = await questionService.getQuestion(params.id);
+
+    if (userID != currentQuestion.user_id) {
+        response.redirect('/questions');
+        return;
+    }
 
     const option_text = parameters.get("option_text");
-    const is_correct = parameters.get("is_correct")
+    const is_correct = parameters.get("is_correct");
 
-    const data = getSingleQuestionData()
+    const data = getSingleQuestionData();
 
     if (option_text.length < 1) {
         data.error = 'The input needs to be at least 1 character long!';
-        data.option_text = option_text
-        data.question = await questionService.getQuestion(params.id);
+        data.option_text = option_text;
+        data.question = currentQuestion;
         data.options = await optionService.getOptions(params.id);
 
         render("question.eta", data);
     }
     else {
         await optionService.addOption(params.id, option_text, is_correct ? true : false);
-        response.redirect(`/questions/${params.id}`)
+        response.redirect(`/questions/${params.id}`);
     }
 };
 

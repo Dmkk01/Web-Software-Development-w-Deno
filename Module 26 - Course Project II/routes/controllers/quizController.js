@@ -28,18 +28,13 @@ const submitQuestion = async ({ response,  render, params, user }) => {
     const user_id = user.id;
     const questionID = params.id
     const optionId = params.optionId
-    console.log(user_id, questionID, optionId)
     const opt = await optionService.getOptionByID(optionId);
-    console.log('hello1')
     await quizService.addQuestionAnswer(user_id, questionID, optionId, opt.is_correct);
-    console.log('hello2')
     if (opt.is_correct) {
-        console.log('hello3')
         response.redirect(`/quiz/${questionID}/correct`);
         return;
     }
     else {
-        console.log('hello4')
         response.redirect(`/quiz/${questionID}/incorrect`);
         return;
     }
@@ -56,7 +51,6 @@ const wrongAnswer = async ({render, params }) => {
     const questionID = params.id
     const res = await optionService.getOptions(questionID);
 
-    console.log(res)
     const data = {
         correct: res.find(x => x.is_correct == true).option_text,
         message: 'Incorrect!'
