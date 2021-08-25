@@ -2,8 +2,12 @@ import * as questionService from "../../services/questionService.js";
 import * as optionService from "../../services/optionService.js";
 
 
-const getRandomQuestion = async ({ response, render,  user }) => {
+const getRandomQuestion = async ({ response }) => {
     const questionResponse = await questionService.getRandomQuestion();
+    if (questionResponse.length === 0 ){
+        response.body = {}
+        return;
+    }
     const optionResponse = await optionService.getOptions(questionResponse.id);
 
     for (let i = 0; i < optionResponse.length; i++) {
@@ -29,9 +33,18 @@ const answerQuestion = async ({ response, request}) => {
     const content = await body.value;
 
     const optionId = content.optionId;
-    
+    const questionId = content.questionId;
+    if(!optionId || !content.questionId) {
+        response.body = {}
+        return;
+    }
+    const question = await questionService.getQuestion(parseInt(questionId));
     const questionResponse = await optionService.getOptionByID(parseInt(optionId));
-    
+
+    if (!questionResponse || !question) {
+        response.body = {}
+        return;
+    }
     const res = {
         correct: questionResponse.is_correct
     }

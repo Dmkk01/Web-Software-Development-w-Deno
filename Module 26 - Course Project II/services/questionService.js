@@ -23,7 +23,12 @@ const getQuestion = async (questionID) => {
 
 const getRandomQuestion = async () => {
   const res = await executeQuery('SELECT * FROM questions ORDER BY RANDOM() LIMIT 1 ');
-  return res.rows[0];
+  if (res.rows.length === 0 ) {
+    return []
+  }
+  else {
+    return res.rows[0];
+  }
 }
 
 const deleteQuestion = async (questionID) => {

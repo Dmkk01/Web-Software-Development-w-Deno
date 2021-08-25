@@ -16,7 +16,7 @@ const getAllQuestions = async ({ render, user }) => {
     render("questions.eta", data);
 };
 
-const addQuestion = async ({request, render, user}) => {
+const addQuestion = async ({response, request, render, user}) => {
     const body = request.body({ type: "form" });
     const params = await body.value;
 
@@ -34,8 +34,7 @@ const addQuestion = async ({request, render, user}) => {
     }
     else {
         await questionService.addQuestion(user.id, title, question_text);
-        data.questions = await questionService.getAllQuestions(user.id)
-        render("questions.eta", data);
+        response.redirect('/questions')
     }
 }
 
